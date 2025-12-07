@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио - Начинающий дизайнер и разработчик</title>
+    <style>
+        :root {
+            --color-primary: #2d8a99;
+            --color-primary-hover: #1d6f80;
+            --color-text: #1f2121;
+            --color-text-light: #627c82;
+            --color-bg: #fcfcf9;
+            --color-surface: #ffffff;
+            --color-accent: #e6815f;
+            --space-16: 16px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: var(--color-surface);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-16) var(--space-32);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--space-32);
+        }
+
+        .nav-menu a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #2d8a99 0%, #1d6f80 100%);
+            color: white;
+            padding: 80px var(--space-32);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: var(--space-24);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: var(--space-32);
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: 12px 32px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .cta-button:hover {
+            background-color: #d46b47;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-32);
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            margin-bottom: var(--space-24);
+            color: var(--color-primary);
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: var(--space-16);
+            display: inline-block;
+        }
+
+        /* ABOUT SECTION */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-light);
+        }
+
+        .about-text p {
+            margin-bottom: var(--space-16);
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* PORTFOLIO GALLERY */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-24);
+            margin-top: var(--space-24);
+        }
+
+        .portfolio-card {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .portfolio-card-placeholder {
+            width: 100%;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .portfolio-card p {
+            padding: var(--space-16);
+            font-size: 14px;
+            color: var(--color-text-light);
+        }
+
+        /* CONTACT FORM */
+        .contact-form {
+            max-width: 600px;
+            background: var(--color-surface);
+            padding: var(--space-32);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-24);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(45, 138, 153, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #e74c3c;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #1f2121;
+            color: white;
+            padding: var(--space-32);
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            margin-bottom: var(--space-24);
+        }
+
+        .footer-contact a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin: 0 var(--space-16);
+        }
+
+        .footer-contact a:hover {
+            color: #ffffff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-24);
+            margin: var(--space-24) 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 20px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-16);
+            margin-top: var(--space-24);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            nav {
+                padding: var(--space-16);
+            }
+
+            .nav-menu {
+                gap: var(--space-16);
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            main {
+                padding: var(--space-16);
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: var(--space-16);
+            }
+
+            .contact-form {
+                padding: var(--space-24);
+            }
+
+            footer {
+                padding: var(--space-24);
+            }
+
+            .footer-contact a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-menu {
+                gap: 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 50px var(--space-16);
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            section h2 {
+                font-size: 22px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: var(--space-16);
+            }
+
+            .social-links a {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Портфолио</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в моё портфолио</h1>
+            <p>Я начинающий разработчик веб-сайтов, и этот проект стал моим первым серьёзным опытом в создании веб-продукта. Обладаю средним уровнем владения Python и Lua, что помогает мне уверенно работать с логикой и функциональностью. Совсем недавно начал изучать язык C и постепенно расширяю свои навыки в программировании. Стремлюсь развиваться дальше и создавать всё более качественные решения.</p>
+	<p><img src="5.jpg" alt="5"></p>
+            <a href="#contact" class="cta-button">Связаться со мной</a>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <h2>Обо мне</h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>Привет! Я начинающий разработчик веб-сайтов, и создание этого проекта стало моим первым серьёзным шагом в направлении веб-разработки. Моё увлечение программированием началось с Python, где я достиг среднего уровня владения, создавая простые прототипы, учебные проекты и автоматизируя небольшие процессы. Позднее я расширил свои навыки, изучив Lua, что дало мне понимание скриптовых систем, базовой игровой логики и разных подходов к структуре кода.</p>
+                    <p>Сейчас я постепенно осваиваю язык C, делая первые шаги в сторону низкоуровневого программирования и разбираясь в том, как устроена работа систем на более глубоком уровне. Я стараюсь применять полученные знания на практике, изучая основы управления памятью, взаимодействия с операционными системами и базовые принципы оптимизации. Каждый учебный проект помогает мне формировать более целостное представление о программировании и улучшать качество написанного кода.</p>
+                    <p>В качестве примера своего текущего опыта и прогресса я прикладываю лабораторные работы №0, №1 и №2 (ниже). Эти материалы отражают мой путь обучения, постепенное погружение в различные языки и стремление развиваться дальше, создавая более уверенные и качественные решения..</p>
+                </div>
+                <div>
+                    <p><img src="3.png" alt="3"></p>
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d8a99;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1d6f80;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="400" fill="url(#grad1)" rx="15"/>
+                        <circle cx="200" cy="120" r="50" fill="#ffffff" opacity="0.9"/>
+                        <path d="M 150 200 Q 200 180 250 200 L 240 280 Q 200 300 160 280 Z" fill="#ffffff" opacity="0.8"/>
+                        <rect x="140" y="250" width="30" height="60" rx="15" fill="#ffffff" opacity="0.8"/>
+                        <rect x="230" y="250" width="30" height="60" rx="15" fill="#ffffff" opacity="0.8"/>
+                        <text x="200" y="370" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle" opacity="0.7">проекты которые смог найти на данный момент</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO SECTION -->
+        <section id="portfolio">
+            <h2>Активные проекты на C (портфолио проектов)</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+		<p><img src="0.jpg" alt="0"></p>
+                    <p><strong>Лабораторная 0:</strong> Ввод трёх целых чисел и вычисление суммы первого и второго. Простая, но важная практика работы с базовыми операциями и вводом-выводом в Си.</p>
+                </div>
+                <div class="portfolio-card"> 
+		<p><img src="1.png" alt="1"></p>
+                    <p><strong>Лабораторная 1:</strong> Определение, является ли число степенью 3 или -3. С дополнительным выводом показателя степени. Использование циклов и логических операций.</p>
+                </div>
+                <div class="portfolio-card">
+		<p><img src="2.jpg" alt="2"></p>
+                    <p><strong>Лабораторная 2:</strong> Анализ строки: подсчёт слов заданной длины, средняя длина слова, количество слов длиннее пользовательского значения. Работа со строками и массивами.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2>Свяжитесь со мной</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message">Пожалуйста, введите ваше имя</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email адрес *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message">Пожалуйста, введите корректный email (должен содержать @)</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение *</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <span class="error-message">Пожалуйста, введите сообщение</span>
+                </div>
+                <button type="submit" class="submit-btn">Отправить сообщение</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <p style="font-family: 'Georgia', serif; font-size: 20px; font-weight: bold; margin-bottom: 15px; color: rgba(255,255,255,0.95);">Мои контакты</p>
+                <a href="tel:+79220590625">+79220590625</a>
+                <a href="mailto:hkaaadidi@gmail.com">hkaaadidi@gmail.com</a>
+            </div>
+            <div class="social-links">
+                <a href="https://t.me/yourprofile" title="Telegram" aria-label="Telegram">📱</a>
+                <a href="https://vk.com/yourprofile" title="VKontakte" aria-label="VKontakte">🔗</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Portfolio. Все права защищены
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // SMOOTH SCROLLING FOR NAVIGATION
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // FORM VALIDATION
+        const contactForm = document.getElementById('contactForm');
+        const formInputs = contactForm.querySelectorAll('input, textarea');
+
+        function validateField(field) {
+            const formGroup = field.closest('.form-group');
+            const value = field.value.trim();
+
+            if (!value) {
+                formGroup.classList.add('error');
+                return false;
+            }
+
+            if (field.type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    formGroup.classList.add('error');
+                    return false;
+                }
+            }
+
+            formGroup.classList.remove('error');
+            return true;
+        }
+
+        formInputs.forEach(input => {
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => {
+                if (input.closest('.form-group').classList.contains('error')) {
+                    validateField(input);
+                }
+            });
+        });
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let isValid = true;
+            formInputs.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                alert('Спасибо! Ваше сообщение успешно отправлено. Мы свяжемся с вами в ближайшее время.');
+                contactForm.reset();
+            }
+        });
+    </script>
+</body>
+</html>
