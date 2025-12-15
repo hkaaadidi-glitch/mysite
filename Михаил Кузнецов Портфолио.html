@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Михаил Кузнецов - Музыкант и Радиомеханик | Портфолио</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7d9b6f;
+            --primary-dark: #5a7555;
+            --primary-light: #a8b896;
+            --bg-dark: #1a1a1a;
+            --bg-darker: #0f0f0f;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent: #c9a961;
+            --accent-light: #e0c47d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, rgba(93, 117, 85, 0.3) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            background-color: rgba(201, 169, 97, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/226c6319-68b2-43c9-aec7-39231d350409') center/cover no-repeat;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-roles {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .role-badge {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(125, 155, 111, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 169, 97, 0.5);
+        }
+
+        .about {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background-color: rgba(125, 155, 111, 0.3);
+            border: 1px solid var(--primary);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            border: 3px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+            transition: all 0.3s ease;
+            object-fit: cover;
+            height: auto;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .portfolio {
+            background-color: rgba(93, 117, 85, 0.1);
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-darker);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(125, 155, 111, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-info h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .album-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .album-link:hover {
+            color: var(--accent);
+        }
+
+        .contact {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-dark);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .contact-icon.phone::before {
+            content: "📞";
+            font-size: 1.5rem;
+            background: none;
+        }
+
+        .contact-icon.email::before {
+            content: "✉";
+            font-size: 1.5rem;
+            background: none;
+        }
+
+        .contact-text a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--accent-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--bg-darker);
+            border: 2px solid var(--primary);
+            color: var(--text-light);
+            border-radius: 6px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(201, 169, 97, 0.3);
+            background-color: rgba(93, 117, 85, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(125, 155, 111, 0.3);
+            border: 2px solid var(--primary);
+            color: var(--text-light);
+        }
+
+        .form-message.error {
+            background-color: rgba(220, 53, 69, 0.3);
+            border: 2px solid #dc3545;
+            color: #ff6b6b;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, rgba(93, 117, 85, 0.2) 100%);
+            color: var(--text-light);
+            padding: 3rem 20px 1.5rem;
+            border-top: 2px solid var(--primary);
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(125, 155, 111, 0.3);
+            color: var(--text-muted);
+        }
+
+        .qr-section {
+            text-align: center;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .qr-code {
+            max-width: 200px;
+            margin: 1rem auto;
+            padding: 1rem;
+            background-color: var(--text-light);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: auto;
+        }
+
+        .favorites {
+            padding: 80px 20px;
+            background-color: rgba(15, 15, 15, 0.9);
+        }
+
+        .favorites-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .favorite-item {
+            background-color: var(--bg-darker);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(125, 155, 111, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .favorite-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(125, 155, 111, 0.3);
+            border-color: var(--primary);
+        }
+
+        .favorite-item h3 {
+            color: var(--accent);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .favorite-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .favorite-cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--bg-dark);
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-cover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .role-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+
+            header {
+                padding: 0.75rem 0;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 0.5rem;
+                text-align: center;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                gap: 1.5rem;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#home" class="logo">МИ</a>
+            <nav>
+                <a href="#home">Главная</a>
+                <a href="#about">Обо мне</a>
+                <a href="#portfolio">Портфолио</a>
+                <a href="#favorites">Любимые</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Михаил Кузнецов</h1>
+            <p>Музыкант, Студент, Радиомеханик</p>
+            <div class="hero-roles">
+                <span class="role-badge">🎵 Музыкант</span>
+                <span class="role-badge">📚 Студент ГУАП</span>
+                <span class="role-badge">⚙️ Радиомеханик</span>
+            </div>
+            <a href="#portfolio" class="cta-button">Смотреть работы</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">Обо мне</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Привет! Я Михаил Кузнецов</h3>
+                <p>Мне 18 лет, я студент ГУАП, специализирующийся на радиомеханике. В 2025 году с отличием закончил Электромашиностроительный колледж по специальности радиомеханик.</p>
+                <p>Помимо учёбы, я увлечён музыкой и создаю собственные музыкальные композиции. Моя страсть — это сочетание творчества и технологии. Я верю, что музыка и техника могут взаимодополнять друг друга, создавая что-то уникальное и вдохновляющее.</p>
+                <p>На этом сайте вы сможете познакомиться с моим музыкальным творчеством, узнать больше о проектах Кузнецова Михаила и способах связи со мной.</p>
+                
+                <div style="display: flex; gap: 2rem; margin: 2rem 0; align-items: center; flex-wrap: wrap;">
+                    <div style="text-align: center; flex: 1; min-width: 120px;">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/a386e23c-a0c2-40d0-8eaa-5b07e4f83369" alt="ЭМК" style="max-width: 100px; height: auto; margin-bottom: 0.5rem;">
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Электромашиностроительный колледж</p>
+                        <p style="font-size: 0.75rem; color: var(--accent); margin: 0.25rem 0; font-weight: 600;">Радиомеханик (2025) 🏆</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; min-width: 120px;">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/a092c648-bc3f-4e54-901c-6948509dcd84" alt="ГУАП" style="max-width: 100px; height: auto; margin-bottom: 0.5rem;">
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Санкт-Петербургский ГУ аэрокосмических приборов</p>
+                        <p style="font-size: 0.75rem; color: var(--accent); margin: 0.25rem 0; font-weight: 600;">Студент</p>
+                    </div>
+                </div>
+                
+                <div class="skills">
+                    <span class="skill-tag">🎹 Музыкальное производство</span>
+                    <span class="skill-tag">⚡ Радиотехника</span>
+                    <span class="skill-tag">🎧 Звукорежиссура</span>
+                    <span class="skill-tag">💻 Веб-разработка</span>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3f20eb5f-12b9-4ba6-afd6-4585eb04a85a" alt="Михаил - Музыкант" style="border-radius: 12px; border: 3px solid #c9a961; box-shadow: 0 10px 30px rgba(125, 155, 111, 0.3);">
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="portfolio-container">
+            <h2 class="section-title">Портфолио</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7d9b6f;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#5a7555;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#grad1)"/>
+                        <text x="150" y="100" font-size="40" fill="#c9a961" text-anchor="middle" dominant-baseline="middle" font-weight="bold">🎵</text>
+                    </svg>
+                    <div class="gallery-info">
+                        <h3>Мой первый альбом</h3>
+                        <p>Коллекция электронной музыки</p>
+                        <a href="https://music.yandex.ru/album/39129484?utm_medium=copy_link" target="_blank" class="album-link">Слушать на Яндекс.Музыке →</a>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#5a7555;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#7d9b6f;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#grad2)"/>
+                        <circle cx="150" cy="100" r="50" fill="none" stroke="#c9a961" stroke-width="3"/>
+                        <circle cx="150" cy="100" r="35" fill="none" stroke="#a8b896" stroke-width="2"/>
+                        <circle cx="150" cy="100" r="20" fill="#c9a961"/>
+                    </svg>
+                    <div class="gallery-info">
+                        <h3>Производство музыки</h3>
+                        <p>Работа в DAW и синтезаторы</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9a961;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#7d9b6f;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#grad3)"/>
+                        <path d="M 50 150 L 100 50 L 150 100 L 200 40 L 250 120" stroke="#a8b896" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <circle cx="50" cy="150" r="5" fill="#c9a961"/>
+                        <circle cx="100" cy="50" r="5" fill="#c9a961"/>
+                        <circle cx="150" cy="100" r="5" fill="#c9a961"/>
+                        <circle cx="200" cy="40" r="5" fill="#c9a961"/>
+                        <circle cx="250" cy="120" r="5" fill="#c9a961"/>
+                    </svg>
+                    <div class="gallery-info">
+                        <h3>Развитие навыков</h3>
+                        <p>Постоянное обучение и рост</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7d9b6f;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#c9a961;stop-opacity:0.5" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="300" height="200" fill="url(#grad4)"/>
+                        <g transform="translate(150, 100)">
+                            <path d="M 0 -40 Q 30 -30 40 0 Q 30 30 0 40 Q -30 30 -40 0 Z" fill="#a8b896" opacity="0.8"/>
+                            <path d="M 0 -25 Q 18 -18 24 0 Q 18 18 0 24 Q -18 18 -24 0 Z" fill="#c9a961"/>
+                        </g>
+                    </svg>
+                    <div class="gallery-info">
+                        <h3>Проекты в процессе</h3>
+                        <p>Новые композиции скоро</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="qr-section">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Быстрый доступ</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Отсканируй QR-код для входа на сайт с мобильного</p>
+                <div class="qr-code">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/0197c69c-090e-43f4-b7de-fbc4fb4e5f5c.png" alt="QR код">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="favorites" class="favorites">
+        <div class="favorites-container">
+            <h2 class="section-title">Мои любимые исполнители</h2>
+            <div class="favorites-grid">
+                <article class="favorite-item">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/42a18894-aac5-4a61-bbd1-fb8a82ce3bed" alt="Егор Попс" style="width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; margin-bottom: 1rem;">
+                    <h3>Егор Попс</h3>
+                    <p>Российский исполнитель с атмосферным, немного психоделическим звучанием, который сочетает гитарные партии и электронные текстуры. Его музыка вдохновляет меня на творчество.</p>
+                    <a href="https://open.spotify.com/artist/6fy44sepKtuTX21MWEeJ4h" target="_blank" class="album-link">Слушать релизы →</a>
+                </article>
+<article class="favorite-item">
+    <img src="https://www.ultimate-guitar.com/static/article/news/2/166152_0_wide_ver1717677746.jpg"
+         alt="Pink Floyd"
+         style="width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; margin-bottom: 1rem;">
+    <h3>Pink Floyd</h3>
+    <p>Легендарная британская рок-группа с концептуальными альбомами и мощными визуальными образами. Их работы над звуком и экспериментами с электроникой — чистый вдохновение.</p>
+    <a href="https://www.pinkfloyd.com" target="_blank" class="album-link">Официальный сайт →</a>
+</article>
+<article class="favorite-item">
+    <img src="https://i.scdn.co/image/ab67616d0000b2733329b9afebe487ffdab6d2cf"
+         alt="nobody.one – Ocean Echo"
+         style="width: 100%; aspect-ratio: 1/1; border-radius: 10px; object-fit: cover; margin-bottom: 1rem;">
+    <h3>nobody.one</h3>
+    <p>Инструментальный рок-проект Сергея Табачникова с техничной гитарой, плотным звучанием и кинематографическими композициями. Уникальное сочетание мастерства и творчества.</p>
+    <a href="https://www.youtube.com/c/nobodyonemusic" target="_blank" class="album-link">YouTube канал →</a>
+</article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Контакты</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Свяжись со мной</h3>
+                <div class="contact-item">
+                    <span class="contact-icon phone"></span>
+                    <div class="contact-text">
+                        <strong>Телефон</strong><br>
+                        <a href="tel:+79890654343">+7 989 065-43-43</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon email"></span>
+                    <div class="contact-text">
+                        <strong>Почта</strong><br>
+                        <a href="mailto:misha@mail.ru">misha@mail.ru</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon" style="background-color: var(--accent); width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-weight: bold; font-size: 1.5rem;">🎵</span>
+                    <div class="contact-text">
+                        <strong>Музыка</strong><br>
+                        <a href="https://music.yandex.ru/album/39129484" target="_blank">Яндекс.Музыка</a>
+                    </div>
+                </div>
+            </div>
+
+            <form id="contactForm" class="contact-form">
+                <div id="formMessage" class="form-message"></div>
+                <div class="form-group">
+                    <label for="name">Имя*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение*</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Отправить сообщение</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Портфолио</h4>
+                    <p>Музыкант, студент ГУАП, радиомеханик. Создатель оригинальной электронной музыки.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <p><a href="#home" style="color: var(--primary); text-decoration: none;">Главная</a></p>
+                    <p><a href="#about" style="color: var(--primary); text-decoration: none;">Обо мне</a></p>
+                    <p><a href="#portfolio" style="color: var(--primary); text-decoration: none;">Портфолио</a></p>
+                    <p><a href="#favorites" style="color: var(--primary); text-decoration: none;">Любимые исполнители</a></p>
+                    <p><a href="#contact" style="color: var(--primary); text-decoration: none;">Контакты</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="https://vk.com" target="_blank" class="social-link" title="ВКонтакте">VK</a>
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">Свяжись со мной в соцсетях</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Михаил. Все права защищены. | Портфолио | <a href="mailto:misha@mail.ru" style="color: var(--primary); text-decoration: none;">misha@mail.ru</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            formMessage.style.display = 'none';
+            formMessage.textContent = '';
+
+            if (!name || !email || !message) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '❌ Пожалуйста, заполни все поля';
+                formMessage.style.display = 'block';
+                return;
+            }
+
+            if (!email.includes('@')) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '❌ Пожалуйста, введи корректный email адрес';
+                formMessage.style.display = 'block';
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '❌ Пожалуйста, введи корректный email адрес';
+                formMessage.style.display = 'block';
+                return;
+            }
+
+            formMessage.className = 'form-message success';
+            formMessage.textContent = '✅ Спасибо за сообщение! Я свяжусь с тобой в ближайшее время.';
+            formMessage.style.display = 'block';
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.style.color = 'var(--text-light)';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
